@@ -1,0 +1,33 @@
+<% include ./partials/header%>
+
+<div class=container>
+    <form class="form-signin" action="/login" method="post">
+      <div class="text-center mb-4">
+        <img class="mb-4" src="https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/eat-circle-orange-512.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Ponce BestWing</h1>
+      </div>
+
+      <div class="form-label-group">
+        <input type="text"  name="username"class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputEmail">Email address</label>
+      </div>
+
+      <div class="form-label-group">
+        <input type="password" name="password" class="form-control" placeholder="Password" required="">
+        <label for="inputPassword">Password</label>
+      </div>
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <a class="btn btn-lg btn-success btn-block" href="/signUp">Sign up</a>
+      <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
+    </form>
+  
+</div>
+
+
+<% include ./partials/footer%>

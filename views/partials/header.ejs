@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>
+            Ponce_BestWing
+        </title>
+      
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css"/>
+    </head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+     <a class="navbar-brand" href="/">Ponce BestWing</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Main</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/menu">Menu</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/location">Location</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/new_online_order">OrderOnline</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link ml-auto" href="/shoppingCart">Shopping Cart</a>
+      </li>
+      
+    </ul>
+    <div class="ml-auto">
+      <% if(!currentUser){%>
+      
+  
+    <a class="btn btn-primary " href="/signUp">Sign up</a>
+    <a class="btn btn-success" href="/login">Log in</a>
+    <% }else{ %>
+    <a href="/userProfile"><strong>Log in: </strong><%=currentUser.username%> </a> 
+    <a class="btn btn-danger" href="/logout">Log out</a>
+    <% }%>
+    </div>
+        </div>
+</nav>
+
+
+    

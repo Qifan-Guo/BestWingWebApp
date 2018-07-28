@@ -1,0 +1,29 @@
+body{
+    padding-top: 60px;
+}
+
+.locationTime{
+    border:solid;
+    border-width: 2px;
+    background-color:#696f7a;
+    height: 100px;
+    border-collapse: collapse;
+    padding:1.5rem;
+    
+}
+
+.cardImage{
+  width: 50%;
+}
+.right{
+    float: right;
+}
+.left{
+    float: left;
+}
+.form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+}

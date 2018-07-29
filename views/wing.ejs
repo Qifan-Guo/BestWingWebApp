@@ -1,0 +1,106 @@
+<% include ./partials/header%>
+    <h1>bestwing</h1>
+    <button type="button" class="btn btn-secondary viewFlavor" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Hot || Med || Mild || HoneyHot || LemonPepper|| BBQ || Braised || Teriyaky ||">
+        View All Our Flavors
+    </button>
+    <div class="container">
+        <form action="/shoppingCart" method="post">
+            <div class="container">
+                <div class="row">
+                    <div class="class col-md-6">
+                        <div class="quantity ">
+                            <h5>Total Number of Wings You Want</h5>
+                            <select id="totalWing" name="TotalQuantity">
+                                <option value="0">0</option>
+                                <option value="6">6</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="flavor">
+                            <p class="font-weight-light Info" style="font-size:0.7rem;">
+                                Click on Split if You Want More than One Flavor
+                                <br> Example: Total Quantity: 30 Wings
+                                <br> 20 HoneyHot (Click Split)
+                                <br> 10 Mild+LemonPepper
+                                <br>
+                            </p>
+                            <div id="splitGroup">
+                                <div id="splitBox" class="row">
+                                    <div class="col-4">
+                                        <label class="split">Quantity</label>
+                                        <input name="Quantity1" type="number" class="form-control" placeHolder="N/A">
+                                    </div>
+                                    <div class="col-8">
+                                        <label class="split">Type Your 1st Flavor</label>
+                                        <input name="Flavor1" type="text" class="form-control" placeHolder="N/A">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="float-right addMinus">
+                                <button type="button" id="addButton"><i class="fas fa-plus-square" style="color:green"></i> Split</button>
+                                <button type="button" id="removeButton" class="btn-danger"><i class="fas fa-minus-square"></i> Remove</button>
+                                <input name="splitNumber" type="number" style="display:none"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Side</h5>
+                        <button type="button" id="none" name="WingsOnly" class="btn btn-outline-warning" aria-pressed="true">No Side Wings Only</button>
+                        <br>
+                        <button type="button" name="frenchFries" id="frenchFries" class="btn  btn-outline-info " aria-pressed="true">French Fries</button>
+                        <br>
+                        <div class="frenchFriesOption">
+                            <input type="checkbox" name="FrenchFries" value="FrenchFries"/>
+                            <label class="friesOption" >French Fries (Straight)</label><br>
+                            <input type="checkbox" name="HHonFries" value="HHonFries"/>
+                            <label class="friesOption">HoneyHot on Fries! 50cents</label>
+                         
+                           
+                        </div>
+                        <button type="button" id="friedRice" class="btn btn-outline-info" aria-pressed="true">FriedRice</button>
+                        <div class="friedRiceOption">
+                            <p class="font-weight-light Info" style="font-size:0.7rem;">All FriedRice Come with Peas Carrots Onion.<br>If there is Special Requirement <br> Please Let us know in the Special Notes Section</p>
+                            <input name="riceOptions" type="radio" value="Regular">
+                            <label >+Regular FriedRice<span style="font-size:0.5rem">
+                 Peas,Carrots,Onion</label><br>
+                 <input name="riceOptions" type="radio" value="Veg">
+                <label >+Veg +$1.5<span style="font-size:0.5rem">
+                 Mushroom,Brocolli</label><br>
+                <input name="riceOptions" type="radio" value="Chicken">
+                <label >+Chicken +$2</label><br>
+                <input name="riceOptions" type="radio" value="Beef">
+                <label >+Beef +$2</label><br>
+                <input name="riceOptions" type="radio" value="Shirmp">
+                <label >+Shrimp +$2</label><br>
+                <input name="riceOptions" type="radio" value="House">
+                <label >+House<span style="font-size:0.5rem">
+                 chicken,beef,Shrimp
+                </span></label>
+                            <hr style="margin:0.5rem;">
+                            <input type="checkbox" name="HHonRice" value="HHonRice">
+                            <label  style="font-size:0.75rem">Popular Options:HoneyHot on FriedRice! 50cents</label>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-md-6 specialNotes mx-auto">
+                       <h5>Special Notes</h5>
+                            <br>
+                            <textarea type="text" name="Special_Notes" class="NoteBox" placeHolder="Let us Know if You have any Special Requirement!"></textarea>
+                    </div>
+                    <br>
+                    <div class="col-12">
+                        <input type="submit" class="mx-auto submit">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <% include ./partials/footer%>

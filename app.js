@@ -1,10 +1,11 @@
 var express = require("express"),
     passport = require("passport"),
     LocalStrategy= require("passport-local"),
-    User = require("./model/user"),
     mongoose=require("mongoose"),
-    bodyParser=require("body-parser"),
-    app= express();
+      User = require("./model/user"),
+      Order=require("./model/order")
+        bodyParser=require("body-parser"),
+        app= express();
 app.use(bodyParser.urlencoded({extended: true}));    
 mongoose.connect("mongodb://localhost:27017/bestwing_online_app",{ useNewUrlParser: true });
 app.set("view engine","ejs");
@@ -29,14 +30,14 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-var order =new mongoose.Schema({
-    item_name:String,
-    price:Number
-});
 
-var Order =mongoose.model("order",order);
-
-//Order.create({item_name:"12Wings",price:"6.99"});
+// Order.create({totalQuantity:10,price:6.49,split:0.5},function(err,order){
+//     if(err){
+//         console.log(err);
+//     }else{
+//         console.log(order);
+//     }
+// });
 app.get("/",function(req, res) {
     res.redirect("index");
 })
@@ -46,7 +47,7 @@ app.get("/index",function(req,res){
         if(err){
             console.log(err);
         }else{
-            console.log(req.username);
+      
             res.render("index",{order:order});
         }
     })
@@ -55,6 +56,10 @@ app.get("/index",function(req,res){
 app.get("/new_online_order",function(req, res) {
     res.render("online_order");
 });
+
+app.get("/wings",function(req, res) {
+    res.render("wing");
+})
 app.get("/menu",function(req, res) {
     res.render("menu")
 });
@@ -62,12 +67,18 @@ app.get("/location",function(req, res) {
     res.render("location")
 });
 app.get("/shoppingCart",function(req, res) {
+    
     res.render("shoppingCart")
 });
 
+app.post("/shoppingCart",function(req, res) {
+    res.send(req.body);
+})
+
 //sign in form
 app.get("/login",function(req, res) {
-    res.render("logIn")
+    res.render("logIn");
+     console.log(req.body);
 });
 //sign up logic 
 app.post("/login",passport.authenticate("local",
@@ -76,6 +87,7 @@ app.post("/login",passport.authenticate("local",
     failureRedirect:"/login"
     
 }), function(req, res) {
+ 
     
 })
 
@@ -95,7 +107,7 @@ app.post("/signUp",function(req,res){
             res.render("/signUp");
         }else{
             passport.authenticate("local")(req,res,function(){
-                res.redirect("/");
+                res.redirect("/login");
             })
         }
     }   )

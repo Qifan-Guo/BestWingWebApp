@@ -27,3 +27,79 @@ body{
     padding: 15px;
     margin: auto;
 }
+
+.card{
+    display: inline-block;
+    word-wrap: break-word;
+    padding-bottom: 5px !important;
+}
+.quantity{
+    margin-left:1.5rem;
+    float: left;
+}
+.viewFlavor{
+    position: fixed;
+    top:3rem;
+     left:45%;
+     z-index: 2000;
+    
+}
+.Info {
+    font-size:0.75rem;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+.split{
+    margin-bottom: 0;
+}
+.addMinus{
+    float: right !important;
+    width:5rem;
+}
+#addButton,#removeButton{
+    font-size: 0.7rem;
+    margin:0;
+    width:5rem;
+}
+.quantity{
+    margin-top:7rem;
+}
+#totalWing{
+    margin-left: 35%;
+    width: 6rem;
+    height: 4rem;
+    font-size: 2rem;
+}
+.frenchFriesOption{
+      margin-left: 5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    display: none;
+}
+.friedRiceOption{
+    margin-left: 5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    display: none;
+}
+#friedRice,#frenchFries,#none{
+    margin-left: 5rem;
+    margin-top: 0.5rem;
+}
+.NoteBox{
+    margin-left: 5rem;
+    height: 10rem;
+    width: 15rem;
+}
+.specialNotes{
+    display: block;
+    margin-top: 1.5rem;
+   
+}
+.submit{
+    margin-top: 1.5rem;
+    display: block;
+    
+}

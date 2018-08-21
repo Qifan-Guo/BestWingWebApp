@@ -1,5 +1,36 @@
 <% include ./partials/header%>
-<h1>ShoppingCart</h1>
 
 
+<% if(typeof order != 'undefined'){ %>
+<div class="container">
+<p>Total:Wing 
+<%= order.totalQuantity %>
+</p>
+
+
+<form action="/checkout" method="post">
+<div class="row">
+<div class="col-6 mx-auto">    
+<ul class="list-group list-group-flush">
+<% Object.keys(data).forEach(function(key){ %>
+<li class="list-group-item"><%-key %>:<%-data[key] %></li>
+
+<% }) %>
+<li class="list-group-item">Subtotal: <%= order.price %></li>
+<% var tax=order.price*0.089; var total=order.price+tax;%>
+<li class="list-group-item">Tax: $<%= tax.toFixed(2) %></li>
+<li class="list-group-item">Total: $<%= total.toFixed(2) %></li>
+<input type="number" name="total" style="display:none" value=<%=total.toFixed(2)%>></input>
+<button type="submit" class="btn btn-danger">Pay Now </button>
+</ul>
+
+</form>
+
+
+ <% } else{ %> 
+ <h1>ShoppingCart is Empty!</h1>
+ <% } %>
+</div>
+</div>
+</div>
 <% include ./partials/footer%>

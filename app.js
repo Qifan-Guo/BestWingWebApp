@@ -3,7 +3,8 @@ var express = require("express"),
     LocalStrategy= require("passport-local"),
     mongoose=require("mongoose"),
       User = require("./model/user"),
-      Order=require("./model/order")
+      Order=require("./model/order"),
+      priceCheck=require("./model/itemPrice"),
         bodyParser=require("body-parser"),
         app= express();
 app.use(bodyParser.urlencoded({extended: true}));    
@@ -31,11 +32,11 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-// Order.create({totalQuantity:10,price:6.49,split:0.5},function(err,order){
+// priceCheck.create({itemName:30,price:12.49},function(err,price){
 //     if(err){
 //         console.log(err);
 //     }else{
-//         console.log(order);
+//         console.log(price);
 //     }
 // });
 app.get("/",function(req, res) {
@@ -43,14 +44,7 @@ app.get("/",function(req, res) {
 })
 
 app.get("/index",function(req,res){
-    Order.find({},function(err,order){
-        if(err){
-            console.log(err);
-        }else{
-      
-            res.render("index",{order:order});
-        }
-    })
+   res.render("index");
     
 });
 app.get("/new_online_order",function(req, res) {
@@ -72,7 +66,30 @@ app.get("/shoppingCart",function(req, res) {
 });
 
 app.post("/shoppingCart",function(req, res) {
-    res.send(req.body);
+    var totalQuantity=req.body.TotalQuantity;
+    console.log(totalQuantity);
+    var wingPrice=priceCheck.findOne({itemName:totalQuantity},function(err,wingPrice){
+        if(err){
+            console.log(err);
+        }else{
+    Order.create({totalQuantity:req.body.TotalQuantity,price:wingPrice.price},
+    function(err,order){
+        if(err){
+            console.log(err)
+        }else{
+            
+            
+            res.render("shoppingCart",{order:order,data:req.body});
+            if(req.user){
+                console.log(req.user);
+            }
+        }
+    })
+            
+        }
+    })
+    
+
 })
 
 //sign in form
@@ -122,6 +139,16 @@ app.get("/userProfile",isLoggedIn,function(req, res) {
 app.get("/logout",function(req, res) {
     req.logout();
     res.redirect("/");
+})
+
+app.post("/checkout",function(req, res) {
+    console.log(req.body.total);
+    console.log(req.body);
+    res.render("checkout",{amount:req.body.total});
+})
+app.post("/paid",function(req, res) {
+    res.send("Thank you Your order is going to be ready in 10mins!"
+    +"<br>Of course it is not going to charge your real credit card.");
 })
 
 function isLoggedIn(req, res, next) {

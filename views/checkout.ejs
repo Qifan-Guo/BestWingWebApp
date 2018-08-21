@@ -1,0 +1,25 @@
+
+<% include ./partials/header%>
+
+<div class="container">
+    
+    
+<form action="/paid" method="post">
+<div class="col-6 mx-auto">
+    <p class="Info"> MasterCard IINs have the first two digts in the range 51-55 <br> Visa IINs always begin with a 4
+<br> American Expression IINs always begin with 34 or 37<br>Trying to type the number to see the validation icon flashing on the right</p>
+<div class="card-js"
+  data-capture-name="true"
+  data-icon-colour="#158CBA">
+</div>
+<br>
+<br>
+<br>
+<p>Total Amount: <%=amount%></p>
+<button type="submit" class="btn btn-warning">Comfirm Pay</button>
+</div>
+</form>
+</div>
+
+
+<% include ./partials/footer%>
